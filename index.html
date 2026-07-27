@@ -1,0 +1,91 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#155eef"><link rel="manifest" href="manifest.webmanifest"><title>SKBB Practice</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f5f7fb;color:#172033;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:650px;margin:auto;padding:24px 18px 40px}h1{font-size:31px;margin:10px 0 4px}h2{margin:4px 0 14px;font-size:21px}.sub{color:#667085;margin:0 0 23px}.card{background:white;border-radius:18px;padding:17px;margin:12px 0;box-shadow:0 3px 12px #17203310}.subject{display:flex;align-items:center;gap:14px;border:0;width:100%;text-align:left;color:inherit;font:inherit;cursor:pointer}.icon{font-size:28px;background:#eaf0ff;border-radius:13px;padding:9px}.subject strong{display:block;font-size:17px}.subject span{color:#667085;font-size:14px}.right{margin-left:auto;color:#98a2b3}.progress{height:8px;background:#e6eaf0;border-radius:10px;overflow:hidden}.progress i{display:block;height:100%;background:#155eef}.question{font-size:21px;line-height:1.45}.choice{display:block;width:100%;text-align:left;font:inherit;padding:15px;margin:10px 0;border:1px solid #d9e0eb;border-radius:14px;background:white;color:#172033}.choice:disabled{opacity:1}.correct{border-color:#16a34a;background:#eaf9ef}.wrong{border-color:#dc2626;background:#fff0f0}.notice{border-radius:14px;background:#eef4ff;padding:14px;line-height:1.45}.next{font:inherit;font-weight:700;border:0;border-radius:13px;background:#155eef;color:white;width:100%;padding:15px;margin-top:16px}.hidden{display:none}.result{text-align:center;padding:30px 12px}.score{font-size:55px;font-weight:800;color:#155eef;margin:8px}.foot{font-size:13px;color:#667085;margin-top:24px;text-align:center}
+</style></head><body><main id="app"></main><script>
+const banks={
+"คณิตศาสตร์":`25% ของ 240 เท่ากับเท่าไร|50,60,75,80|1|240 × 25/100 = 60
+3/4 + 2/3 มีค่าเท่าไร|5/7,7/12,17/12,1 1/4|2|ทำส่วนให้เท่ากันได้ 17/12
+จำนวนใดเป็นจำนวนเฉพาะ|21,27,29,33|2|29 หารลงตัวได้ด้วย 1 และ 29
+ถ้า x + 8 = 19 แล้ว x เท่ากับเท่าไร|9,10,11,12|2|19 − 8 = 11
+สี่เหลี่ยมผืนผ้ากว้าง 6 ซม. ยาว 9 ซม. มีพื้นที่เท่าไร|15,30,54,108|2|6 × 9 = 54
+ค่าเฉลี่ยของ 6, 8, 10, 12 คือเท่าไร|8,9,10,11|1|ผลรวม 36 หาร 4 = 9
+2.5 × 4 เท่ากับเท่าไร|1,6.5,10,25|2|2.5 คูณ 4 = 10
+อัตราส่วน 12 : 18 อย่างต่ำคือข้อใด|2 : 3,3 : 2,4 : 6,6 : 9|0|หารทั้งสองจำนวนด้วย 6
+มุมภายในสามเหลี่ยมรวมกันกี่องศา|90,180,270,360|1|รวม 180 องศา
+15² − 5² เท่ากับเท่าไร|100,150,200,250|2|225 − 25 = 200
+0.375 เป็นเศษส่วนอย่างต่ำข้อใด|3/8,3/5,5/8,375/10|0|375/1000 = 3/8
+ซื้อของ 500 บาท ลด 10% ต้องจ่ายกี่บาท|400,440,450,490|2|ลด 50 บาท จ่าย 450
+รอบรูปสี่เหลี่ยมจัตุรัสด้านละ 7 ซม.|14,28,49,56|1|4 × 7 = 28
+1.2 กิโลเมตร เท่ากับกี่เมตร|120,1020,1200,12000|2|1.2 × 1000 = 1200
+ห.ร.ม. ของ 18 และ 24 คือ|3,6,9,12|1|ตัวหารร่วมมากที่สุดคือ 6
+ปากกา 5 ด้าม 75 บาท ปากกา 8 ด้ามราคาเท่าไร|100,110,120,125|2|ด้ามละ 15 บาท
+สี่เหลี่ยมคางหมู ฐาน 6,10 สูง 4 มีพื้นที่|16,20,32,40|2|½ × 16 × 4 = 32
+7/8 ÷ 1/4 เท่ากับ|7/32,7/12,7/2,8/7|2|คูณส่วนกลับ ได้ 7/2
+ลำดับ 2,5,8,11,... จำนวนถัดไปคือ|12,13,14,15|2|เพิ่มครั้งละ 3
+ถุงมีแดง 3 น้ำเงิน 2 โอกาสหยิบแดงคือ|2/3,3/5,3/2,5/3|1|แดง 3 จากทั้งหมด 5`,
+"วิทยาศาสตร์":`พืชสร้างอาหารด้วยกระบวนการใด|การหายใจ,การสังเคราะห์ด้วยแสง,การย่อย,การคายน้ำ|1|พืชใช้แสงสร้างอาหาร
+อวัยวะใดทำหน้าที่สูบฉีดเลือด|ปอด,ตับ,หัวใจ,ไต|2|หัวใจสูบฉีดเลือด
+น้ำเปลี่ยนจากของเหลวเป็นไอเรียกว่า|ควบแน่น,ระเหย,แข็งตัว,หลอมเหลว|1|การระเหยคือของเหลวเป็นแก๊ส
+แรงที่ดึงวัตถุเข้าหาโลกคือ|เสียดทาน,แม่เหล็ก,โน้มถ่วง,ไฟฟ้า|2|โลกมีแรงโน้มถ่วง
+ดาวเคราะห์ใดใกล้ดวงอาทิตย์ที่สุด|ศุกร์,พุธ,โลก,อังคาร|1|ดาวพุธใกล้ที่สุด
+หน่วยพื้นฐานของสิ่งมีชีวิตคือ|อวัยวะ,เซลล์,เนื้อเยื่อ,ระบบ|1|เซลล์เป็นหน่วยพื้นฐาน
+แก๊สใดมีมากที่สุดในอากาศ|ออกซิเจน,คาร์บอนไดออกไซด์,ไนโตรเจน,ไอน้ำ|2|ไนโตรเจนราว 78%
+เสียงเดินทางผ่านสิ่งใดไม่ได้|ของแข็ง,ของเหลว,แก๊ส,สุญญากาศ|3|เสียงต้องมีตัวกลาง
+ข้อใดเป็นสัตว์มีกระดูกสันหลัง|ไส้เดือน,แมงมุม,กบ,แมงกะพรุน|2|กบมีกระดูกสันหลัง
+วิตามินใดป้องกันโรคลักปิดลักเปิด|A,B1,C,D|2|วิตามิน C
+วงจรไฟฟ้าทำงานได้เมื่อ|วงจรเปิด,วงจรปิด,ไม่มีสายไฟ,ไม่มีแหล่งไฟฟ้า|1|กระแสไหลในวงจรปิด
+ข้อใดเป็นพลังงานหมุนเวียน|ถ่านหิน,น้ำมัน,แสงอาทิตย์,ก๊าซธรรมชาติ|2|แสงอาทิตย์ทดแทนได้
+ส่วนใดของพืชดูดน้ำและแร่ธาตุ|ใบ,ดอก,ราก,ผล|2|รากดูดจากดิน
+แยกเกลือออกจากน้ำเกลือใช้วิธีใด|กรอง,แม่เหล็ก,ระเหยแห้ง,ร่อน|2|ระเหยน้ำออก
+โลกหมุนรอบตัวเองใช้เวลาประมาณ|12 ชั่วโมง,24 ชั่วโมง,30 วัน,365 วัน|1|ประมาณ 24 ชั่วโมง
+ข้อใดเป็นการเปลี่ยนแปลงทางเคมี|น้ำแข็งละลาย,กระดาษฉีก,เหล็กเป็นสนิม,น้ำเดือด|2|เกิดสารใหม่คือสนิม
+เครื่องมือใดใช้วัดอุณหภูมิ|บารอมิเตอร์,เทอร์มอมิเตอร์,โวลต์มิเตอร์,นาฬิกา|1|เทอร์มอมิเตอร์วัดอุณหภูมิ
+แสงเดินทางเร็วที่สุดในตัวกลางใด|น้ำ,แก้ว,อากาศ,สุญญากาศ|3|เร็วสุดในสุญญากาศ
+ผู้ผลิตในห่วงโซ่อาหารคือ|เสือ,เห็ด,หญ้า,ไส้เดือน|2|หญ้าสร้างอาหารได้
+ข้อใดคือดาวเคราะห์ที่เราอาศัยอยู่|ดาวศุกร์,โลก,ดาวอังคาร,ดาวพฤหัสบดี|1|มนุษย์อาศัยอยู่บนโลก`,
+"ภาษาไทย":`ข้อใดสะกดถูกต้อง|อนุญาติ,อนุญาต,อนุญาติ์,อนุญาติ์|1|คำที่ถูกต้องคือ อนุญาต
+คำว่า ราชา เป็นคำชนิดใด|สรรพนาม,กริยา,นาม,วิเศษณ์|2|เป็นชื่อเรียกบุคคล
+ข้อใดเป็นประโยคคำถาม|ฉันไปโรงเรียน,เธอชื่ออะไร,อย่าวิ่ง,อากาศดีจัง|1|มีคำถามว่า อะไร
+คำตรงข้ามของ ขยัน คือ|เพียร,อดทน,เกียจคร้าน,มานะ|2|เกียจคร้านตรงข้ามขยัน
+นกบินบนท้องฟ้า คำกริยาคือ|นก,บิน,บน,ท้องฟ้า|1|บินแสดงอาการ
+ข้อใดใช้เครื่องหมายคำถามถูกต้อง|ใครมาบ้าง?,ใครมาบ้าง!,ใครมาบ้าง.,ใครมาบ้าง,|0|ประโยคคำถามใช้ ?
+บ้านเรือน มีความสัมพันธ์แบบใด|คำซ้ำ,คำซ้อน,คำประสม,คำพ้อง|1|ความหมายใกล้เคียงกัน
+น้ำขึ้นให้รีบตัก หมายความว่า|ตักน้ำ,รีบคว้าโอกาส,ประหยัดน้ำ,น้ำท่วม|1|ทำเมื่อมีโอกาสเหมาะ
+ข้อใดเป็นคำควบกล้ำแท้|จริง,สร้าง,ตลาด,อร่อย|1|สร เป็นคำควบกล้ำแท้
+คำใดมีอักษรนำ|ขนม,กวาง,ปลา,ตลาด|0|ข นำ น
+เครื่องหมาย ๆ ใช้แทนอะไร|คำซ้ำ,คำย่อ,คำถาม,คำอุทาน|0|ไม้ยมกแทนคำซ้ำ
+ข้อใดเรียงประโยคถูกต้อง|หนังสือ อ่าน ฉัน,ฉัน อ่าน หนังสือ,อ่าน หนังสือ ฉัน,หนังสือ ฉัน อ่าน|1|ประธาน กริยา กรรม
+คำราชาศัพท์ของ กิน คือ|เสวย,บรรทม,เสด็จ,ดำเนิน|0|เสวย
+ข้อใดเป็นคำอุทาน|โอ๊ย!,เพราะ,รวดเร็ว,โรงเรียน|0|แสดงอารมณ์
+นักเรียน เป็นคำประเภทใด|คำมูล,คำประสม,คำซ้ำ,คำพ้อง|1|นัก + เรียน
+ข้อใดใช้ภาษาเหมาะกับครู|เฮ้ย ครูครับ,ครูช่วยอธิบายอีกครั้งได้ไหมครับ,อธิบายใหม่ดิ,ไม่เข้าใจอะ|1|สุภาพเหมาะสม
+เขาวิ่งเร็วมาก คำวิเศษณ์คือ|เขา,วิ่ง,เร็ว,มาก|2|เร็วขยายกริยา
+คำใดใกล้เคียงกับ โกรธ|ดีใจ,โมโห,สงบ,กลัว|1|โมโหหมายถึงโกรธ
+ข้อใดเป็นคำพ้องเสียง|กานต์-กาล,บ้าน-เรือน,เร็ว-เร็ว,นัก-เรียน|0|เสียงเหมือน ความหมายต่าง
+ใจความสำคัญของย่อหน้าคือ|รายละเอียด,สิ่งที่สื่อหลัก,คำยาวที่สุด,ประโยคสุดท้ายเสมอ|1|คือแก่นของเรื่อง`,
+"ภาษาอังกฤษ":`Choose the correct sentence.|She are happy.,She is happy.,She am happy.,She be happy.|1|Use is with she.
+What is the opposite of big?|Tall,Small,Wide,Long|1|Small is opposite of big.
+I ___ to school every day.|go,goes,going,went|0|Use base verb with I.
+Which word is a color?|Apple,Blue,Book,Bird|1|Blue is a color.
+There ___ two cats.|is,are,am,be|1|Use are for plural.
+What does library mean?|โรงพยาบาล,ห้องสมุด,สนามเด็กเล่น,ร้านอาหาร|1|Library = ห้องสมุด
+My father ___ a doctor.|are,is,am,do|1|Father is singular.
+Plural of child is|childs,childes,children,childrens|2|Irregular plural: children.
+___ you like ice cream?|Do,Does,Is,Are|0|Use Do with you.
+The cat is ___ the table.|on,eat,blue,happy|0|On tells position.
+Which is a day of the week?|January,Monday,Morning,Summer|1|Monday is a day.
+He ___ TV now.|watch,watches,is watching,watched|2|Now: present continuous.
+Past form of eat is|eated,ate,eats,eating|1|Ate is the past form.
+I have ___ orange.|a,an,the,two|1|Use an before vowel sound.
+Thank you — ___|Sorry,You’re welcome,Good night,Please|1|Polite reply.
+Which word means เร็ว?|Slow,Fast,Late,Early|1|Fast means เร็ว.
+My book is ___ the bag.|in,run,red,very|0|In means inside.
+How ___ apples?|much,many,old,long|1|Many for countable plural.
+Which is a greeting?|Good morning,Good eating,Good book,Good blue|0|Standard greeting.
+We ___ friends.|is,am,are,be|2|Use are with we.`};
+const icons={"คณิตศาสตร์":"🔢","วิทยาศาสตร์":"🔬","ภาษาไทย":"📚","ภาษาอังกฤษ":"🇬🇧"};let name,qs,n=0,score=0,selected=null;
+function parse(s){return s.split('\n').map(x=>{let a=x.split('|');return{q:a[0],c:a[1].split(','),a:+a[2],e:a[3]}})}
+function home(){app.innerHTML=`<h1>SKBB Practice</h1><p class="sub">ซ้อมสอบเข้า ม.1 • ใช้งานออฟไลน์ได้</p><h2>เลือกวิชาที่ต้องการฝึก</h2>${Object.keys(banks).map(k=>`<div class="card"><button class="subject" onclick="start('${k}')"><b class="icon">${icons[k]}</b><div><strong>${k}</strong><span>20 ข้อ • พร้อมเฉลย</span></div><b class="right">›</b></button></div>`).join('')}<p class="foot">เนื้อหาเป็นแนวฝึกหัด ไม่ใช่ข้อสอบจริงของโรงเรียน</p>`}
+function start(k){name=k;qs=parse(banks[k]);n=0;score=0;selected=null;show()}
+function show(){let q=qs[n], answered=selected!==null;app.innerHTML=`<button onclick="home()" style="border:0;background:none;color:#155eef;font-size:15px">‹ กลับหน้าหลัก</button><p><b>${name}</b> <span style="float:right;color:#667085">ข้อ ${n+1}/20</span></p><div class="progress"><i style="width:${n/20*100}%"></i></div><div class="card question">${q.q}</div>${q.c.map((c,i)=>`<button ${answered?'disabled':''} class="choice ${answered?(i===q.a?'correct':i===selected?'wrong':''):''}" onclick="answer(${i})"><b>${'ABCD'[i]}.</b> ${c}</button>`).join('')}${answered?`<div class="notice"><b>${selected===q.a?'ถูกต้อง!':'เฉลย: '+q.c[q.a]}</b><br>${q.e}</div><button class="next" onclick="next()">${n===19?'ดูผลคะแนน':'ข้อต่อไป'}</button>`:''}`}
+function answer(i){selected=i;if(i===qs[n].a)score++;show()}function next(){if(n++===19){result()}else{selected=null;show()}}function result(){app.innerHTML=`<div class="result"><div style="font-size:65px">${score>=16?'🏆':'📖'}</div><h1>ทำได้เยี่ยม!</h1><p class="sub">${name}</p><div class="score">${score} / 20</div><p>${score>=16?'พร้อมลุยต่อเลย':'ทบทวนเฉลยแล้วลองใหม่อีกครั้งนะ'}</p><button class="next" onclick="start(name)">ทำชุดนี้อีกครั้ง</button><button class="next" style="background:#667085" onclick="home()">เลือกวิชาอื่น</button></div>`}const app=document.querySelector('#app');home();if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js');
+</script></main></body></html>
