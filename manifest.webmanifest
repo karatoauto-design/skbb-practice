@@ -1,0 +1,9 @@
+{
+  "name": "SKBB Practice",
+  "short_name": "SKBB Practice",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#155eef",
+  "description": "ซ้อมสอบเข้า ม.1 แบบออฟไลน์"
+}
